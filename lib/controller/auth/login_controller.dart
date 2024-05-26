@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/view/forget_password.dart';
-import 'package:weather_app/view/home_page.dart';
+// import 'package:weather_app/view/home_page.dart';
 import 'package:weather_app/view/signup.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/api_endpoints.dart';
 
- class LogInControllerImp extends GetxController {
+class LogInControllerImp extends GetxController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late TextEditingController email;
@@ -26,6 +26,7 @@ import '../../utils/api_endpoints.dart';
     var formData = formState.currentState;
     if (formData!.validate()) {
       loginWithEmail();
+      // Get.off(HomePage());
     } else {
       print("Not Valid");
     }
@@ -53,15 +54,12 @@ import '../../utils/api_endpoints.dart';
     Get.to(ForgetPasswordPage());
   }
 
-    Future<void> loginWithEmail() async {
+  Future<void> loginWithEmail() async {
     var headers = {'Content-Type': 'application/json'};
     try {
       var url = Uri.parse(
           ApiEndPoints.baseUrl + ApiEndPoints.authEndpoints.loginEmail);
-      Map body = {
-        'email': email.text.trim(),
-        'password': password.text
-      };
+      Map body = {'email': email.text.trim(), 'password': password.text};
       http.Response response =
           await http.post(url, body: jsonEncode(body), headers: headers);
 
@@ -71,12 +69,10 @@ import '../../utils/api_endpoints.dart';
           var token = json['data']['Token'];
           final SharedPreferences? prefs = await _prefs;
           await prefs?.setString('token', token);
-
           email.clear();
           password.clear();
-          Get.off(HomePage());
         } else if (json['code'] == 1) {
-          throw jsonDecode(response.body)['message'];
+          throw jsonDecode(response.body)["Message"];
         }
       } else {
         throw jsonDecode(response.body)["Message"] ?? "Unknown Error Occured";

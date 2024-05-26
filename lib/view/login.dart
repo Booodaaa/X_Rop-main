@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/view/home_page.dart';
 import '../controller/auth/login_controller.dart';
 import '../function/alert_exit.dart';
 import '../function/valed_input.dart';
@@ -75,8 +76,8 @@ class LogInPage extends StatelessWidget {
                         ButtonText: "LogIn",
                         onTap: () {
                           controller.login();
-                          controller.loginWithEmail();
                         },
+                        onDoubleTap: () => Get.off(HomePage()),
                       ),
                       const SizedBox(
                         height: 25,

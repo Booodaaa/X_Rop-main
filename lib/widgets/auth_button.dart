@@ -7,16 +7,18 @@ import 'app_colors.dart';
 class AuthButton extends StatelessWidget {
   String ButtonText;
   final void Function()? onTap;
+  final void Function()? onDoubleTap;
   AuthButton({
     Key? key,
     required this.ButtonText,
-    this.onTap,
+    this.onTap, this.onDoubleTap,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: GestureDetector(
+        onDoubleTap: onDoubleTap,
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(16),

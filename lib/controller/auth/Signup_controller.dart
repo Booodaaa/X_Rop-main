@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -94,7 +94,9 @@ class SignUpControllerImp extends GetxController {
               "Unknown Error Occurred";
         }
       } else {
-        throw jsonDecode(response.body)["Message"] ?? "Unknown Error Occurred";
+        throw jsonDecode(response.body)["Message"] ?? "Unknown Error ";
+        // ignore: dead_code
+        log(response.body);
       }
     } catch (e) {
       Get.back();
@@ -109,5 +111,6 @@ class SignUpControllerImp extends GetxController {
             );
           });
     }
+    // Get.off(HomePage());
   }
 }

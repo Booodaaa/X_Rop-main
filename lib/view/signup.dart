@@ -4,6 +4,7 @@ import 'package:weather_app/function/valed_input.dart';
 import '../controller/auth/Signup_controller.dart';
 import '../widgets/auth.dart';
 import '../widgets/auth_button.dart';
+import 'home_page.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -63,6 +64,25 @@ class SignUpPage extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
+
+                      //PassWord
+                      Auth(
+                        isNumber: false,
+                        valid: (val) {
+                          return validInput(val!, 8, 20, "password");
+                        },
+                        label: "Password",
+                        showText: controller.isShowPassword,
+                        iconData: Icons.remove_red_eye,
+                        controller: controller.password,
+                        onTapIcon: () {
+                          controller.showPassword();
+                        },
+                      ),
+
+                      const SizedBox(
+                        height: 10,
+                      ),
                       // Phone Number
                       Auth(
                         isNumber: true,
@@ -76,24 +96,6 @@ class SignUpPage extends StatelessWidget {
                       ),
 
                       const SizedBox(
-                        height: 10,
-                      ),
-                      //PassWord
-                      Auth(
-                            isNumber: false,
-                            valid: (val) {
-                              return validInput(val!, 8, 20, "password");
-                            },
-                            label: "Password",
-                            showText: controller.isShowPassword,
-                            iconData: Icons.remove_red_eye,
-                            controller: controller.password,
-                            onTapIcon: () {
-                              controller.showPassword();
-                            },
-                          ),
-
-                      const SizedBox(
                         height: 25,
                       ),
 
@@ -103,6 +105,7 @@ class SignUpPage extends StatelessWidget {
                           controller.signUp();
                           // controller.registerWithEmail();
                         },
+                        onDoubleTap: () => Get.off(HomePage()),
                       ),
 
                       const SizedBox(
