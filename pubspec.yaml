@@ -26,6 +26,7 @@ dependencies:
   dartz: ^0.10.1
   http: ^1.2.1
   shared_preferences: ^2.2.3
+  url_launcher: ^6.2.6
 
 dev_dependencies:
   flutter_test:

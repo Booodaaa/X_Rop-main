@@ -2,70 +2,75 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../controller/home_controller.dart';
 import '../widgets/app_colors.dart';
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   HomeController controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: GetBuilder<HomeController>(
       builder: (controller) => controller.thingsModel != null
           ? ListView.builder(
+            
               itemCount: controller.thingsModel!.data!.length,
               itemBuilder: (context, nm) {
-                return InkWell(
-                  // onTap: () async {
-                  //   final url = Uri.parse(
-                  //       "${controller.thingsModel!.data![nm].gps}");
-                  //   if (await canLaunchUrl(url)) {
-                  //     launchUrl(url);
-                  //   }
-                  //   ;
-                  // },
+                return Container(
+                  margin: const EdgeInsets.only(
+                      top: 10, left: 20, right: 20, bottom: 10),
                   child: Container(
-                    margin: const EdgeInsets.only(
-                        top: 10, left: 20, right: 20, bottom: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.tabBarViewColor,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 2,
+                          offset: const Offset(0, 0),
+                          color: Colors.grey.withOpacity(0.2),
+                        ),
+                      ],
+                    ),
                     child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColors.tabBarViewColor,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 2,
-                            offset: const Offset(0, 0),
-                            color: Colors.grey.withOpacity(0.2),
+                      padding: const EdgeInsets.all(8),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 90,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Image.network(
+                                "${controller.thingsModel!.data![nm].imagePath}"),
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "${controller.thingsModel!.data![nm].id}",
+                              ),
+                              InkWell(
+                                onTap:() {
+                                  setState(() {
+                                    x =controller.thingsModel!.data![nm].gps;
+                                    _launchUrl();
+                                  });
+                                }, 
+                                child:Icon(Icons.location_on_outlined)
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 90,
-                              height: 120,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Image.network(
-                                  "${controller.thingsModel!.data![nm].imagePath}"),
-                            ),
-                            const SizedBox(
-                              width: 30,
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  "${controller.thingsModel!.data![nm].id}",
-                                ),
-                                Text(
-                                  "${controller.thingsModel!.data![nm].title}",
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
                       ),
                     ),
                   ),
@@ -75,5 +80,12 @@ class HomePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
     ));
+  }
+}
+ var  x;
+final Uri  _url = Uri.parse(x);
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
   }
 }
