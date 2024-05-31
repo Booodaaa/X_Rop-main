@@ -20,60 +20,70 @@ class _HomePageState extends State<HomePage> {
         body: GetBuilder<HomeController>(
       builder: (controller) => controller.thingsModel != null
           ? ListView.builder(
-            
+
               itemCount: controller.thingsModel!.data!.length,
               itemBuilder: (context, nm) {
                 return Container(
                   margin: const EdgeInsets.only(
-                      top: 10, left: 20, right: 20, bottom: 10),
+                      top: 0, left: 0, right: 0, bottom: 0),
+                  child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 180,
+                              width: double.infinity,
+                              child: Stack(alignment: Alignment.topCenter, children: [
+                                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
                   child: Container(
+                    height: 80 , 
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.tabBarViewColor,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 2,
-                          offset: const Offset(0, 0),
-                          color: Colors.grey.withOpacity(0.2),
-                        ),
-                      ],
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 90,
-                            height: 120,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Image.network(
-                                "${controller.thingsModel!.data![nm].imagePath}"),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                "${controller.thingsModel!.data![nm].id}",
-                              ),
-                              InkWell(
-                                onTap:() {
-                                  setState(() {
+                        color: Colors.blueGrey[200],
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(50),
+                            bottomRight: Radius.circular(50))),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("${controller.thingsModel!.data![nm].title}",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
                                     x =controller.thingsModel!.data![nm].gps;
                                     _launchUrl();
                                   });
-                                }, 
-                                child:Icon(Icons.location_on_outlined)
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+
+                                    
+                                  },
+                                  child:Icon(Icons.location_on_outlined)),
+                              ],
+                            ),
+                  )),
+                                Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(color: Colors.brown[100]!, blurRadius: 15)
+                    ],
+                    borderRadius: BorderRadius.circular(250),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(250),
+                    child: Image.network(
+                      "${controller.thingsModel!.data![nm].imagePath}",
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
                     ),
                   ),
+                ),
+                                )
+                              ]),
+                            ),
+                          ],
+                        ),
                 );
               })
           : const Center(
