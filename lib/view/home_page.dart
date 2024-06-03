@@ -14,6 +14,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeController controller = Get.put(HomeController());
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.getData2();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(250),
                                 child: Image.network(
-                                  "${controller.thingsModel!.data![nm].imagePath}",
+                                  "[${controller.thingsModel!.data![nm].imagePath}",
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,

@@ -1,12 +1,11 @@
 
 
-class things_model {
+class things_model  {
   String? status;
   String? message;
   List<Data>? data;
 
   things_model({this.status, this.message, this.data});
-
   things_model.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
@@ -43,8 +42,5 @@ class Data {
     title = json['title'];
     gps = json['gps'];
     imagePath = json['image_path'];
-    // robotId = json['robot_id'];
-    // createdAt = json['created_at'];
-    // updatedAt = json['updated_at'];
   }
 }

@@ -5,7 +5,7 @@ import 'package:weather_app/view/chose_page.dart';
 import '../controller/auth/Signup_controller.dart';
 import '../widgets/auth.dart';
 import '../widgets/auth_button.dart';
-import 'home_page.dart';
+// import 'home_page.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);

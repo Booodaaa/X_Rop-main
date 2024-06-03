@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/view/home_page.dart';
+// import 'package:weather_app/view/home_page.dart';
 import 'package:weather_app/view/signup.dart';
 
 // import 'bindings/initial_binding.dart';

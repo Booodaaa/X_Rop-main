@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/view/signup.dart';
+import 'package:weather_app/view/chose_page.dart';
+// import 'package:weather_app/view/signup.dart';
 void main() {
   runApp(MyApp());
 }
@@ -11,13 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // initialBinding: InitialBingings(),
-      title: 'Flutter Demo',
+      // initialBinding: InitialBingings(),com      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignUpPage(),
+      home: ChoosePage(), 
     );
   }
 }

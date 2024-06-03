@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:control_pad_plus/control_pad_plus.dart';
+// import 'package:control_pad_plus/control_pad_plus.dart';
 class CarControllPage extends StatefulWidget {
   @override
   State<CarControllPage> createState() => _CarControllPageState();
@@ -20,7 +20,7 @@ class _CarControllPageState extends State<CarControllPage> {
           SafeArea(
             child: Container(
               color: Colors.grey[300],
-              child: JoystickView(),
+              //child: JoystickView(),
               // Column(
               //   children: [
               //     const SizedBox(
