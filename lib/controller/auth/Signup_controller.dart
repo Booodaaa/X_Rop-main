@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_app/view/chose_page.dart';
 import 'package:weather_app/view/login.dart';
+import 'package:weather_app/view/verify_code_homepage.dart';
 import '../../utils/api_endpoints.dart';
 import '../../view/home_page.dart';
 import 'package:http/http.dart' as http;
@@ -24,7 +25,7 @@ class SignUpControllerImp extends GetxController {
 
   signUp() {
     if (formState.currentState!.validate()) {
-      // Get.off(VerfiyCodeHomePage());
+    //  Get.off(chosepage());
       registerWithEmail();
     } else {
       print("Not Valid");
@@ -79,6 +80,7 @@ class SignUpControllerImp extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
+        Get.off(ChoosePage());
         if (json['code'] == 0) {
           var token = json['data']['Token'];
           print(token);
@@ -89,15 +91,16 @@ class SignUpControllerImp extends GetxController {
           email.clear();
           password.clear();
           phone.clear();
-          Get.off(ChoosePage());
-        } else {
+          // Get.off(ChoosePage());
+        } 
+        else {
           throw jsonDecode(response.body)["message"] ??
-              "Unknown Error Occurred";
+              "Succsses account created";
         }
       } else {
         throw jsonDecode(response.body)["Message"] ?? "Unknown Error ";
         // ignore: dead_code
-        log(response.body);
+        // log(response.body);
       }
     } catch (e) {
       Get.back();

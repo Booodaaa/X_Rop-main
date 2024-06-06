@@ -12,7 +12,7 @@ class LogInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // LogInControllerImp controller = Get.put(LogInControllerImp());
+     LogInControllerImp controller = Get.put(LogInControllerImp());
     Get.lazyPut(() => LogInControllerImp());
     return Scaffold(
         backgroundColor: Colors.grey[200],
@@ -77,9 +77,9 @@ class LogInPage extends StatelessWidget {
                         AuthButton(
                           ButtonText: "LogIn",
                           onTap: () {
-                            controller.login();
+                            controller.loginWithEmail();
                           },
-                          onDoubleTap: () => Get.off(ChoosePage()),
+                          // onDoubleTap: () => Get.off(ChoosePage()),
                         ),
                         const SizedBox(
                           height: 25,

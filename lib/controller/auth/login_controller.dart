@@ -66,13 +66,14 @@ class LogInControllerImp extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
+         Get.off(ChoosePage());
         if (json['code'] == 0) {
           var token = json['data']['Token'];
           final SharedPreferences? prefs = await _prefs;
           await prefs?.setString('token', token);
           email.clear();
           password.clear();
-          Get.off(ChoosePage());
+          // Get.off(ChoosePage());
         } else if (json['code'] == 1) {
           throw jsonDecode(response.body)["Message"];
         }
