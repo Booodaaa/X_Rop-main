@@ -1,13 +1,13 @@
 import 'dart:convert';
-import 'dart:developer';
+// import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_app/view/chose_page.dart';
 import 'package:weather_app/view/login.dart';
-import 'package:weather_app/view/verify_code_homepage.dart';
+// import 'package:weather_app/view/verify_code_homepage.dart';
 import '../../utils/api_endpoints.dart';
-import '../../view/home_page.dart';
+// import '../../view/home_page.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpControllerImp extends GetxController {

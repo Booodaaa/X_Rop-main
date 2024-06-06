@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/view/chose_page.dart';
+// import 'package:weather_app/view/chose_page.dart';
 import '../controller/auth/login_controller.dart';
 import '../function/alert_exit.dart';
 import '../function/valed_input.dart';
@@ -12,7 +12,7 @@ class LogInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     LogInControllerImp controller = Get.put(LogInControllerImp());
+    //  LogInControllerImp controller = Get.put(LogInControllerImp());
     Get.lazyPut(() => LogInControllerImp());
     return Scaffold(
         backgroundColor: Colors.grey[200],
