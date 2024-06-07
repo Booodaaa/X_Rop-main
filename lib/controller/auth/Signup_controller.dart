@@ -1,14 +1,17 @@
-import 'dart:convert';
+// import 'dart:convert';
 // import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_app/controller/auth/server_get.dart';
+import 'package:weather_app/main.dart';
+import 'package:weather_app/model/signupmodel.dart';
 import 'package:weather_app/view/chose_page.dart';
 import 'package:weather_app/view/login.dart';
 // import 'package:weather_app/view/verify_code_homepage.dart';
-import '../../utils/api_endpoints.dart';
+// import '../../utils/api_endpoints.dart';
 // import '../../view/home_page.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 class SignUpControllerImp extends GetxController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
@@ -25,7 +28,7 @@ class SignUpControllerImp extends GetxController {
 
   signUp() {
     if (formState.currentState!.validate()) {
-    //  Get.off(chosepage());
+      //  Get.off(chosepage());
       registerWithEmail();
     } else {
       print("Not Valid");
@@ -61,44 +64,26 @@ class SignUpControllerImp extends GetxController {
     super.dispose();
   }
 
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> registerWithEmail() async {
     try {
-      var headers = {'Content-Type': 'application/json'};
-      var url = Uri.parse(
-          ApiEndPoints.baseUrl + ApiEndPoints.authEndpoints.registerEmail);
-      Map body = {
+      ServerGate serverGeat = ServerGate();
+      CustomResponse response =
+          await serverGeat.sendToServer(url: "auth/register", body: {
         'name': name.text,
         'email': email.text.trim(),
         'password': password.text,
         'phone': phone.text,
-      };
-
-      http.Response response =
-          await http.post(url, body: jsonEncode(body), headers: headers);
+      });
 
       if (response.statusCode == 200) {
-        final json = jsonDecode(response.body);
-        Get.off(ChoosePage());
-        if (json['code'] == 0) {
-          var token = json['data']['Token'];
-          print(token);
-          final SharedPreferences? prefs = await _prefs;
+        Signupmodel model = Signupmodel.fromJson(response.response!.data);
 
-          await prefs?.setString('token', token);
-          name.clear();
-          email.clear();
-          password.clear();
-          phone.clear();
-          // Get.off(ChoosePage());
-        } 
-        else {
-          throw jsonDecode(response.body)["message"] ??
-              "Succsses account created";
-        }
+        Get.off(ChoosePage());
+        preferences.setString("token", model.authorisation!.token!);
       } else {
-        throw jsonDecode(response.body)["Message"] ?? "Unknown Error ";
+        throw (response.response!.data)["Message"] ?? "Unknown Error ";
         // ignore: dead_code
         // log(response.body);
       }

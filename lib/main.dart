@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/view/signup.dart';
-void main() {
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  preferences = await SharedPreferences.getInstance();
   runApp(MyApp());
 }
 
@@ -21,3 +25,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+late SharedPreferences preferences;

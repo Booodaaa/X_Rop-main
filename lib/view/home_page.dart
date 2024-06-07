@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeController controller = Get.put(HomeController());
-    // Get.lazyPut(() => HomeController());
+  // Get.lazyPut(() => HomeController());
 
   @override
   Widget build(BuildContext context) {
