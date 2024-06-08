@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weather_app/view/signup.dart';
-import '../widgets/app_colors.dart';
 
-class HomePage extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _SplashPageState extends State<SplashPage>
     with SingleTickerProviderStateMixin {
   @override
   // ignore: unused_element
@@ -22,8 +21,6 @@ class _HomePageState extends State<HomePage>
     }));
   }
 
-
-
   @override
   void dispose() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -34,43 +31,26 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Container(
-      //   child: Image.asset("assets/images/pppppppppppp.png"),
-      // ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              AppColors.color2,
-              AppColors.color1,
-            ],
-          ),
-        ),
-        child: Center(
-          child: Column(
+      body: Center(
+        child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              (Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  // Icon(
-                  //   Icons.home,
-                  // ),
-                  Text(
-                    "X-Robot",
-                    style: TextStyle(
-                      fontSize: 50,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              )),
-            ],
-          ),
-        ),
+              Container(
+                child: Image.asset("assets/images/pppppppppppp.png"),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Text(
+                "X-Robot",
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ]),
       ),
     );
   }
