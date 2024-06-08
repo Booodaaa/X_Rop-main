@@ -33,13 +33,6 @@ class SignUpControllerImp extends GetxController {
     } else {
       print("Not Valid");
     }
-
-    // var formData = formState.currentState;
-    // if (formData!.validate()) {
-    //   print("valid");
-    // } else {
-    //   print("Not Valid");
-    // }
   }
 
   goToLogInPage() {
@@ -83,9 +76,9 @@ class SignUpControllerImp extends GetxController {
         Get.off(ChoosePage());
         preferences.setString("token", model.authorisation!.token!);
       } else {
-        throw (response.response!.data)["Message"] ?? "Unknown Error ";
-        // ignore: dead_code
-        // log(response.body);
+         throw (response.response!.data)["Message"] ?? "Unknown Error ";
+        //  ignore: dead_code
+        //  log(response.body);
       }
     } catch (e) {
       Get.back();
