@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/view/signup.dart';
+// import 'package:weather_app/view/car_controll.dart';
+ import 'package:weather_app/view/spalsh_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignUpPage(),
+      home: SplashPage(),
     );
   }
 }

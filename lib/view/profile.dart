@@ -1,10 +1,15 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import '../widgets/acount_widget.dart';
 import '../widgets/app_colors.dart';
 import '../widgets/app_icon.dart';
 import '../widgets/big_text.dart';
 
-class ProfilePage extends StatelessWidget {
+class Profilepage extends StatelessWidget {
+
+  late TextEditingController stutes;
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,34 +53,34 @@ class ProfilePage extends StatelessWidget {
                           size: 50,
                         ),
                         bigText: BigText(
-                          text: "Abdelrahman Ashraf",
+                          text: "XroBot",
                         )),
                     SizedBox(height: 20),
-                    Container(
-                      child: AccountWidget(
-                          appIcon: AppIcon(
-                            icon: Icons.phone,
-                            backgroundColor: Colors.yellow,
-                            iconColor: Colors.white,
-                            iconSize: 25,
-                            size: 50,
-                          ),
-                          bigText: BigText(
-                            text: "01159443692",
-                          )),
-                    ),
+                    // Container(
+                    //   child: AccountWidget(
+                    //       appIcon: AppIcon(
+                    //         icon: Icons.phone,
+                    //         backgroundColor: Colors.yellow,
+                    //         iconColor: Colors.white,
+                    //         iconSize: 25,
+                    //         size: 50,
+                    //       ),
+                    //       bigText: BigText(
+                    //         text: "01159443692",
+                    //       )),
+                    // ),
                     SizedBox(height: 20),
-                    AccountWidget(
-                        appIcon: AppIcon(
-                          icon: Icons.email,
-                          backgroundColor: Colors.yellow,
-                          iconColor: Colors.white,
-                          iconSize: 25,
-                          size: 50,
-                        ),
-                        bigText: BigText(
-                          text: "Abdelrahman@gmail.com",
-                        )),
+                    // AccountWidget(
+                    //     appIcon: AppIcon(
+                    //       icon: Icons.email,
+                    //       backgroundColor: Colors.yellow,
+                    //       iconColor: Colors.white,
+                    //       iconSize: 25,
+                    //       size: 50,
+                    //     ),
+                    //     bigText: BigText(
+                    //       text: "Abdelrahman@gmail.com",
+                    //     )),
                     // SizedBox(height: 20),
                     // AccountWidget(
                     //     appIcon: AppIcon(
@@ -111,5 +116,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
-

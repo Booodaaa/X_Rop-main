@@ -15,9 +15,9 @@ class _ChoosePageState extends State<ChoosePage> {
   int _currentIndex = 0;
   List<Widget> body = [
     HomePage(),
-    CarControllPage(),
+    carcontrol(),
     UploadImage(),
-    ProfilePage(),
+    Profilepage(),
   ];
   @override
   Widget build(BuildContext context) {
