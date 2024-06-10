@@ -13,21 +13,29 @@ class _carcontrolState extends State<carcontrol> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("controller"),
-      ),
+          // title: const Text("controller"),
+          ),
       body: Center(
-        child: InkWell(
-            onTap: () {
-              setState(() {
-                x = "https://x-robot.future-developers.cloud/control.html";
-                _launchUrl();
-              });
-            },
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
+          onPressed: () {
+            setState(() {
+              x = "https://x-robot.future-developers.cloud/control.html";
+              _launchUrl();
+            });
+          },
+          child: const Padding(
+            padding: EdgeInsets.all(12.0),
             child: Text(
-              " drive ",
-              style:
-                  TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold),
-            )),
+              "Drive",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
